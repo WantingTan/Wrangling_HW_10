@@ -8,29 +8,32 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-```{r}
+```{r,eval=TRUE}
 # Load Required Packages
 library(shiny)
-#library(tidyverse)
+library(tidyverse)
 library(tidycensus)
 ```
 
 ```{r}
 #Get data from API
 source("api-keys.R")
-census_api_key(api.key.UScensus)
+census_api_key("api.key.UScensus")
 
 # Define UI for application
 ui <- fluidPage(
   # Application title
-  titlePanel("American Community Survey"),
+  titlePanel("Shiny App of American Community Survey Data"),
 
   # Sidebar Layout
   sidebarLayout(
 
     # SelectInput for State and Type of data
     sidebarPanel(
-
+      
+      helpText("Create plots with 
+        information from the US Census."),
+      
       selectInput("State", "State",
                   choices = state.abb,
                   selected = "NJ"),
@@ -42,7 +45,6 @@ ui <- fluidPage(
     ),
 
     
-    # Show a plot
     mainPanel(plotOutput("Plot"))
   )
 )
@@ -71,7 +73,6 @@ server <- function(input, output) {
   })
 
 }
-
 
 
 # Run the application 

@@ -1,0 +1,2 @@
+api.key.nytimes<-"09b24102ec2b427f8e54b763b2fb4763"
+api.key.UScensus <-"1c19d027a1e6011b8a5ed22ff313006334980811"
